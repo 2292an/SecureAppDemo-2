@@ -1,4 +1,8 @@
-# Pasos para ejecutar el proyecto
+# Asegurando un API
+
+La solución de este documento pretende presentar buenas prácticas para poder asegurar un API adecuadamente, con el fin de cubrir exitosamente las más comunes y mayores amenazas según OWASP.
+
+Se hizo integración con una base de datos en sql server corriendo en un docker y autenticación con JWT respecto a la configuración dentro de la misma base de datos.
 
 ## 1. Instalar dotnet
 
@@ -132,3 +136,5 @@ Solo Admin tiene permitido crear nuevos usuarios.
 ## 10. Comprobación de roles
 
 Una vez que se han creado 2 usuarios con roles distintos se puede intentar usar el bearer token de cada uno para poder ejecutar tanto la acción de GET como de POST sobre users con el fin de verificar si realmente se está validando el tipo de rol de acceso.
+
+Si alguien con rol `DataWarehouseOperator` intenta crear un usuario el servidor debería de informar que hay un error 403. En cambio si tiene el rol de Admin se puede llamar la acción sin ningún problema.
