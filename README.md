@@ -65,7 +65,7 @@ Usar template como este para el demo actual:
     "Issuer": "mi-api",
     "Audience": "mi-api-client",
     "Secret": "9f4c2a7d8b1e5f6a3c9d0e2f7a1b8c6d4e9f0a2b7c1d5e8f3a6b9c2d1e4f7a8",
-    "ExpirationMinutes": 60
+    "ExpirationMinutes": 1
   },
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost,1433;Database=AuthDemoDb;User Id=sa;Password=Secur3app.;TrustServerCertificate=True;"

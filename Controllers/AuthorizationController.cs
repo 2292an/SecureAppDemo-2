@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SecureAppDemo.Dtos;
 using SecureAppDemo.Models.Request;
 using SecureAppDemo.Models.Response;
@@ -7,6 +8,7 @@ using SecureAppDemo.Services;
 namespace Controllers
 {
     [ApiController]
+    [EnableRateLimiting("Fixed")]
     [Route("api/authorization")]
     public class AuthorizationController : ControllerBase
     {

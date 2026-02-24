@@ -36,6 +36,6 @@ public class AuthorizationRepository : IAuthorizationRepository
 
     private bool VerifyPassword(string password, string hash)
     {
-        return BCrypt.Net.BCrypt.Verify(password, hash);
+        return BCrypt.Net.BCrypt.Verify(password, hash); //encriptado el password y lo compara con el hash guardado en la base de datos
     }
 }

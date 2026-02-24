@@ -44,7 +44,7 @@ public class AuthorizationService : IAuthorizationService
         var secret = jwtSettings["Secret"];
         var issuer = jwtSettings["Issuer"];
         var audience = jwtSettings["Audience"];
-        var expirationMinutes = int.Parse(jwtSettings["ExpirationMinutes"] ?? "60");
+        var expirationMinutes = int.Parse(jwtSettings["ExpirationMinutes"]);
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -55,7 +55,7 @@ public class AuthorizationService : IAuthorizationService
             new("externalId", user.ExternalId.ToString()),
         };
 
-        claims.AddRange([.. user.Roles.Select(r => new Claim(ClaimTypes.Role, r.Role.Name))]);
+        claims.AddRange([.. user.Roles.Select(r => new Claim(ClaimTypes.Role, r.Role.Name))]); // cuales roles tiene el usuario y los agrega como claims al token
 
         var token = new JwtSecurityToken(
             issuer: issuer,

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SecureAppDemo.Data.Entities;
 using SecureAppDemo.Dtos;
 using SecureAppDemo.Exceptions;
@@ -11,6 +12,7 @@ namespace SecureAppDemo.Controllers
 {
     [Authorize]
     [ApiController]
+    [EnableRateLimiting("Fixed")]
     [Route("api/users")]
     public class UserController : ControllerBase
     {
@@ -64,7 +66,7 @@ namespace SecureAppDemo.Controllers
 
             try
             {
-                var newUser = new CreateUserDto
+                var newUser = new CreateUserDto // ocultamiento de la contraseña en el dto de respuesta, se utiliza un dto de request para recibir la contraseña y un dto de response para devolver los datos del usuario sin la contraseña
                 {
                     Username = request.Username,
                     FirstName = request.FirstName,
